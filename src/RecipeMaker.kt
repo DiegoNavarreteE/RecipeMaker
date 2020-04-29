@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
             ***Bienvenidos a Recipe Maker***
                Selecccione una opción:
             1.- Hacer una receta
-            2.- Ver mis recetas
+            2.- Ver mis recetas1
             3.- Salir
         """.trimIndent())
         var dataEntry = DataEntry(readLine())
@@ -13,18 +13,11 @@ fun main(args: Array<String>) {
             in 1..1 -> {
                 i = 1;
                 do {
-                    println(
-                        """
-                        ***Bienvenido a la creación de una receta***
-                           Seleccione una opción: 
-                        1.-Crear una receta
-                        2.-Regresar al menú principal
-                        3.-Salir
-                    """.trimIndent())
+                    makeRecipe()
                     var firstMenu = DataEntry(readLine())
                     when (firstMenu.getOption()) {
-                        in 2..2 -> continue@mPrincipal
-                        in 3..3 -> i = 3
+                        in 9..9 -> continue@mPrincipal
+                        in 10..10 -> i = 3
                         else -> println("Opción no existe o no configurada")
                     }
                 } while (i != 3)
@@ -32,19 +25,11 @@ fun main(args: Array<String>) {
             in 2..2 -> {
                 i = 2
                 do {
-                    println(
-                        """
-                    ***Bienvenido a la vista de una receta***
-                       Seleccione una opción: 
-                    1.-Buscar una receta
-                    2.-Regresar al menú principal
-                    3.-Salir
-                    """.trimIndent()
-                    )
+                    viewRecipe()
                     var secondMenu = DataEntry(readLine())
                     when (secondMenu.getOption()) {
                         in 2..2 -> continue@mPrincipal
-                        in 3..3 -> break@mPrincipal
+                        in 3..3 -> i=3
                         else -> println("Opción no existe o no configurada")
                     }
                 } while (i != 3)
@@ -61,4 +46,28 @@ fun main(args: Array<String>) {
             else -> println("La opción no es válida")
         }
     }while(i!=3)
+}
+fun makeRecipe(){
+    return println("""
+                        ***Hacer receta***
+        Selecciona por categoría el ingrediente que buscar:
+        1.- Agua
+        2.- Leche
+        3.- Carne
+        4.- Verduras
+        5.- Frutas
+        6.- Cereal
+        7.- Huevos
+        8.- Aceite
+        9.- Menú Principal
+        10.- Salir
+    """.trimIndent())
+}
+
+fun viewRecipe(){
+    return println("""
+        ***Ver mis Recetas***
+        2.- Menu Principal
+        3.- Salir
+    """.trimIndent())
 }
